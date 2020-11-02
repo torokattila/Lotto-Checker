@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
+    <script src="/sweetalert2.js"></script>
+    <title>Lotto Checker</title>
+</head>
+<body>
+    <div class="container" align="center">
+        <h1 class="main-title">Vajon nyertél a lottón?</h1>
+
+        <div class="content">
+            <h3 class="lotto-type">Lottó típusa</h3>
+
+            <form action="/" method="post">
+                <select name="lotto_types" id="lotto_types" class="types-select">
+                    <option value="5">Ötös</option>
+                    <option value="6">Hatos</option>
+                    <option value="skandi">Skandináv</option>
+                    <option value="keno">Kenó</option>
+                </select>
+            </form>
+        </div>
+    </div>
+    <script src="/scripts.js"></script>
+</body>
+</html>
