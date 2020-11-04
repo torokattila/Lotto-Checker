@@ -20,34 +20,50 @@
         <h1 class="main-title">Vajon nyertél a lottón?</h1>
 
         <div class="content">
-            <h3 class="lotto-type">Lottó típusa</h3>
-            <select name="lotto_types" id="lotto_types" class="types-select">
-                <option class="options" value="none">---</option>
-                <option class="options" value="5">Ötös</option>
-                <option class="options" value="6">Hatos</option>
-                <option class="options" value="skandi">Skandináv</option>
-            </select>
+            <div class="card">
+                <h3 class="lotto-type">Válaszd ki a lottó típusát</h3>
+                <select name="lotto_types" id="lotto_types" class="types-select">
+                    <option class="options" value="none">---</option>
+                    <option class="options" value="5">Ötös</option>
+                    <option class="options" value="6">Hatos</option>
+                    <option class="options" value="skandi">Skandináv</option>
+                </select>
 
-            <form action="/" method="post">
                 <div class="inputs-title-div">
-                    <h3 class="inputs-title">A saját számaid:</h3>
+                    <h3 class="inputs-title">Írd be a nyerőszámaid:</h3>
+                    <div class="skandiv">
+                        <input class="checkbox-custom" type="checkbox" name="machine_checkbox" id="machine">
+                        <label class="checkbox-custom-label" for="machine">Gépi sorsolás:</label>
+                        <input class="checkbox-custom" type="checkbox" name="hand_checkbox" id="hand">
+                        <label class="checkbox-custom-label" for="hand">Kézi sorsolás:</label>
+                    </div>
                 </div>
                 <div class="lotto5">
                     <% for (let i = 0; i < 5; i++) { %>
-                        <div class="number-inputs-div">
-                            <input class="number-inputs" type="text" name="input_number">
-                        </div>
+                    <div class="number-inputs-div">
+                        <input class="number-inputs" type="text" name="input_number">
+                    </div>
                     <% } %>
                 </div>
                 <div class="lotto6">
                     <% for (let i = 0; i < 6; i++) { %>
-                        <div class="number-inputs-div">
-                            <input class="number-inputs" type="text" name="input_number">
-                        </div>
+                    <div class="number-inputs-div">
+                        <input class="number-inputs" type="text" name="input_number">
+                    </div>
                     <% } %>
                 </div>
+                <div class="skandi">
+                    <% for (let i = 0; i < 7; i++) { %>
+                    <div class="number-inputs-div">
+                        <input class="number-inputs" type="text" name="input_number">
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+            <div class="card-bottom-content">
                 <button class="send-button" type="button">Nézzük</button>
-            </form>
+            </div>
+
         </div>
     </div>
     <script src="/scripts.js"></script>

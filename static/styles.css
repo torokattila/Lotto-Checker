@@ -3,7 +3,7 @@ body {
 }
 
 .main-title {
-  color: #00695c;
+  color: #138130;
   font-family: "Asap", sans-serif;
   font-size: 50px;
 }
@@ -12,9 +12,15 @@ body {
   margin-top: 5%;
   width: 50%;
   height: 400px;
-  background-color: #26a69a;
   border-radius: 10px;
   box-shadow: 0px 10px 20px -2px rgba(0, 0, 0, 0.7);
+}
+
+.card {
+  height: 300px;
+  background-color: #19b243;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .lotto-type {
@@ -54,14 +60,14 @@ body {
 }
 
 .send-button {
-  color: #1b7e74;
+  color: #fff;
   cursor: pointer;
   text-align: center;
   width: 140px;
-  background-color: #fff;
+  background-color: #19b243;
   padding: 15px;
   border: none;
-  margin-top: 120px;
+  margin-top: 25px;
   text-transform: uppercase;
   font-family: "Quicksand", sans-serif;
   font-weight: bold;
@@ -76,16 +82,20 @@ body {
 
 .send-button:hover {
   transition: all 0.2s ease;
-  color: white;
-  background-color: #80cbc4;
+  color: #19b243;
+  border: 1px solid #19b243;
+  background-color: #fff;
   box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.35);
 }
 
 .send-button:active {
-  background-color: #26a69a !important;
+  color: white;
+  border: none;
+  background-color: #90dba4 !important;
 }
 
 .inputs-title {
+  visibility: hidden;
   color: white;
   font-family: "Quicksand", sans-serif;
 }
@@ -101,6 +111,14 @@ body {
 .lotto6 {
   visibility: hidden;
   width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.skandi {
+  visibility: hidden;
+  width: 80%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -129,6 +147,49 @@ body {
   transition: all 0.2s ease;
 }
 
+.skandiv {
+  visibility: hidden;
+  text-align: center;
+  color: white;
+  font-family: "Quicksand", sans-serif;
+  font-weight: bold;
+}
+
+.checkbox-custom {
+  display: none;
+}
+.checkbox-custom-label {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.checkbox-custom + .checkbox-custom-label:after {
+  content: "";
+  background: #fff;
+  border-radius: 5px;
+  border: 2px solid #ddd;
+  display: inline-block;
+  vertical-align: middle;
+  width: 10px;
+  height: 10px;
+  padding: 2px;
+  margin-right: 7px;
+  margin-left: 5px;
+}
+.checkbox-custom:checked + .checkbox-custom-label:before {
+  content: "";
+  padding: 2px;
+  position: absolute;
+  width: 1px;
+  height: 5px;
+  border: solid #1b7e74;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+  top: 2px;
+  left: 112px;
+}
+
 @media only screen and (max-width: 600px) {
   .content {
     margin-top: 8%;
@@ -146,10 +207,9 @@ body {
   }
 
   .send-button {
-    margin-top: 140px;
+    margin-top: 40px;
     width: 120px;
     padding: 10px;
-    border: none;
   }
 
   .number-inputs {
@@ -157,5 +217,59 @@ body {
     padding: 10px;
     border-radius: 5px;
     border: none;
+  }
+
+  .card {
+    height: 250px;
+    background-color: #19b243;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  .skandi {
+    visibility: hidden;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .skandiv {
+    font-size: 14px;
+  }
+
+  .checkbox-custom {
+    display: none;
+  }
+  .checkbox-custom-label {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+  .checkbox-custom + .checkbox-custom-label:after {
+    content: "";
+    background: #fff;
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    display: inline-block;
+    vertical-align: middle;
+    width: 10px;
+    height: 10px;
+    padding: 2px;
+    margin-right: 7px;
+    margin-left: 5px;
+  }
+  .checkbox-custom:checked + .checkbox-custom-label:before {
+    content: "";
+    padding: 2px;
+    position: absolute;
+    width: 1px;
+    height: 5px;
+    border: solid #1b7e74;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+    top: 2px;
+    left: 100px;
   }
 }
