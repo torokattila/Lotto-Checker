@@ -190,6 +190,14 @@ body {
   left: 112px;
 }
 
+.swal2-html-container,
+.swal2-title,
+.swal2-confirm,
+.swal2-cancel {
+  font-family: "Quicksand", sans-serif;
+  font-weight: bold;
+}
+
 @media only screen and (max-width: 600px) {
   .content {
     margin-top: 8%;

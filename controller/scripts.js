@@ -26,4 +26,121 @@ $(document).ready(function () {
             $('.inputs-title').css("visibility", "hidden");
         }
     })
-})
+
+    $('[name="machine_checkbox"]').change(function () {
+        if ($(this).is(':checked')) {
+            $('#hand').attr('disabled', true);
+        } else {
+            $('#hand').attr('disabled', false);
+        }
+    });
+
+    $('[name="hand_checkbox"]').change(function () {
+        if ($(this).is(':checked')) {
+            $('#machine').attr('disabled', true);
+        } else {
+            $('#machine').attr('disabled', false);
+        }
+    });
+
+    $('.send-button').click(function () {
+        let selected_option = $('#lotto_types').val();
+        let lotto5Array = [];
+        let lotto6Array = [];
+        let skandiArray = [];
+
+        if (selected_option == '5') {
+            $('input[name^="input_number_lotto5"]').each(function () {
+                lotto5Array.push($(this).val());
+            });
+
+            let lotto5ArrayString = '';
+            let emptyCounter = 0;
+
+            lotto5Array.map(number => {
+                if (number == '') {
+                    emptyCounter++;
+                } else {
+                    lotto5ArrayString += number + ','
+                }
+            });
+
+            if (emptyCounter == 5) {
+                lotto5ArrayString = '';
+            } else {
+                lotto5ArrayString = lotto5ArrayString.slice(0, -1);
+            }
+
+            Swal.fire({
+                title: 'A nyerőszámaid:',
+                text: lotto5ArrayString,
+                icon: 'info',
+                confirmButtonColor: '#19b243',
+                confirmButtonText: 'Értem'
+            }).then((result) => {
+            });
+
+        } else if (selected_option == '6') {
+            $('input[name^="input_number_lotto6"]').each(function () {
+                lotto6Array.push($(this).val());
+            });
+
+            let lotto6ArrayString = '';
+            let emptyCounter = 0;
+
+            lotto6Array.map(number => {
+                if (number == '') {
+                    emptyCounter++;
+                } else {
+                    lotto6ArrayString += number + ','
+                }
+            });
+
+            if (emptyCounter == 5) {
+                lotto6ArrayString = '';
+            } else {
+                lotto6ArrayString = lotto6ArrayString.slice(0, -1);
+            }
+
+            Swal.fire({
+                title: 'A nyerőszámaid:',
+                text: lotto6ArrayString,
+                icon: 'info',
+                confirmButtonColor: '#19b243',
+                confirmButtonText: 'Értem'
+            }).then((result) => {
+            });
+
+        } else if (selected_option == 'skandi') {
+            $('input[name^="input_number_skandi"]').each(function () {
+                skandiArray.push($(this).val());
+            });
+
+            let skandiArrayString = '';
+            let emptyCounter = 0;
+
+            skandiArray.map(number => {
+                if (number == '') {
+                    emptyCounter++;
+                } else {
+                    skandiArrayString += number + ','
+                }
+            });
+
+            if (emptyCounter == 5) {
+                skandiArrayString = '';
+            } else {
+                skandiArrayString = skandiArrayString.slice(0, -1);
+            }
+
+            Swal.fire({
+                title: 'A nyerőszámaid:',
+                text: skandiArrayString,
+                icon: 'info',
+                confirmButtonColor: '#19b243',
+                confirmButtonText: 'Értem'
+            }).then((result) => {
+            });
+        }
+    });
+});
