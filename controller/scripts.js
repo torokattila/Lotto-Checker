@@ -48,6 +48,7 @@ $(document).ready(function () {
         let lotto5Array = [];
         let lotto6Array = [];
         let skandiArray = [];
+        const numberPattern = /^[0-9,]*$/;
 
         if (selected_option == '5') {
             $('input[name^="input_number_lotto5"]').each(function () {
@@ -65,20 +66,37 @@ $(document).ready(function () {
                 }
             });
 
-            if (emptyCounter == 5) {
-                lotto5ArrayString = '';
+            if (emptyCounter > 0) {
+                Swal.fire({
+                    title: 'Töltsd ki az összes mezőt!',
+                    icon: 'info',
+                    confirmButtonColor: '#19b243',
+                    confirmButtonText: 'Értem'
+                }).then((result) => {
+                });
+
             } else {
                 lotto5ArrayString = lotto5ArrayString.slice(0, -1);
-            }
 
-            Swal.fire({
-                title: 'A nyerőszámaid:',
-                text: lotto5ArrayString,
-                icon: 'info',
-                confirmButtonColor: '#19b243',
-                confirmButtonText: 'Értem'
-            }).then((result) => {
-            });
+                if (!(numberPattern.test(lotto5ArrayString))) {
+                    Swal.fire({
+                        title: 'A mezők csak számot tartalmazhatnak!',
+                        icon: 'info',
+                        confirmButtonColor: '#19b243',
+                        confirmButtonText: 'Értem'
+                    }).then((result) => {
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'A nyerőszámaid:',
+                        text: lotto5ArrayString,
+                        icon: 'info',
+                        confirmButtonColor: '#19b243',
+                        confirmButtonText: 'Értem'
+                    }).then((result) => {
+                    });
+                }
+            }
 
         } else if (selected_option == '6') {
             $('input[name^="input_number_lotto6"]').each(function () {
@@ -96,20 +114,36 @@ $(document).ready(function () {
                 }
             });
 
-            if (emptyCounter == 5) {
-                lotto6ArrayString = '';
+            if (emptyCounter > 0) {
+                Swal.fire({
+                    title: 'Töltsd ki az összes mezőt!',
+                    icon: 'info',
+                    confirmButtonColor: '#19b243',
+                    confirmButtonText: 'Értem'
+                }).then((result) => {
+                });
             } else {
                 lotto6ArrayString = lotto6ArrayString.slice(0, -1);
-            }
 
-            Swal.fire({
-                title: 'A nyerőszámaid:',
-                text: lotto6ArrayString,
-                icon: 'info',
-                confirmButtonColor: '#19b243',
-                confirmButtonText: 'Értem'
-            }).then((result) => {
-            });
+                if (!(numberPattern.test(lotto6ArrayString))) {
+                    Swal.fire({
+                        title: 'A mezők csak számot tartalmazhatnak!',
+                        icon: 'info',
+                        confirmButtonColor: '#19b243',
+                        confirmButtonText: 'Értem'
+                    }).then((result) => {
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'A nyerőszámaid:',
+                        text: lotto6ArrayString,
+                        icon: 'info',
+                        confirmButtonColor: '#19b243',
+                        confirmButtonText: 'Értem'
+                    }).then((result) => {
+                    });
+                }
+            }
 
         } else if (selected_option == 'skandi') {
             $('input[name^="input_number_skandi"]').each(function () {
@@ -127,20 +161,36 @@ $(document).ready(function () {
                 }
             });
 
-            if (emptyCounter == 5) {
-                skandiArrayString = '';
+            if (emptyCounter > 0) {
+                Swal.fire({
+                    title: 'Töltsd ki az összes mezőt!',
+                    icon: 'info',
+                    confirmButtonColor: '#19b243',
+                    confirmButtonText: 'Értem'
+                }).then((result) => {
+                });
             } else {
                 skandiArrayString = skandiArrayString.slice(0, -1);
-            }
 
-            Swal.fire({
-                title: 'A nyerőszámaid:',
-                text: skandiArrayString,
-                icon: 'info',
-                confirmButtonColor: '#19b243',
-                confirmButtonText: 'Értem'
-            }).then((result) => {
-            });
+                if (!(numberPattern.test(skandiArrayString))) {
+                    Swal.fire({
+                        title: 'A mezők csak számot tartalmazhatnak!',
+                        icon: 'info',
+                        confirmButtonColor: '#19b243',
+                        confirmButtonText: 'Értem'
+                    }).then((result) => {
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'A nyerőszámaid:',
+                        text: skandiArrayString,
+                        icon: 'info',
+                        confirmButtonColor: '#19b243',
+                        confirmButtonText: 'Értem'
+                    }).then((result) => {
+                    });
+                }
+            }
         }
     });
 });
