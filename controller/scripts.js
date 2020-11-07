@@ -43,6 +43,13 @@ $(document).ready(function () {
         }
     });
 
+    $('input').keyup(function () {
+        let index = $(this).index("input");
+        if (this.value.length == this.maxLength) {
+            $("input:eq(" + (index + 1) + ")").focus();
+        }
+    });
+
     $('.send-button').click(function () {
         let selected_option = $('#lotto_types').val();
         let lotto5Array = [];
