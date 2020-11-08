@@ -86,7 +86,7 @@ $(document).ready(function () {
             } else {
                 lotto5ArrayString = lotto5ArrayString.slice(0, -1);
                 let lottoNumbersFromPage = [];
-                const url = 'https://www.lottoszamok.net/otoslotto/';
+                const url = 'http://www.lottoszamok.net/otoslotto/';
                 let sameNumbersArray = [];
                 let sameNumbersArraySet = new Set();
 
@@ -176,7 +176,7 @@ $(document).ready(function () {
             } else {
                 lotto6ArrayString = lotto6ArrayString.slice(0, -1);
                 let lottoNumbersFromPage = [];
-                const url = 'https://www.lottoszamok.net/hatoslotto/';
+                const url = 'http://www.lottoszamok.net/hatoslotto/';
                 let sameNumbersArray = [];
                 let sameNumbersArraySet = new Set();
 
@@ -254,7 +254,7 @@ $(document).ready(function () {
                 }
             });
 
-            const url = 'https://www.lottoszamok.net/skandinav-lotto/';
+            const url = 'http://www.lottoszamok.net/skandinav-lotto/';
             xmlhttp = new XMLHttpRequest();
             xmlhttp.open("GET", url, true);
             xmlhttp.send();
