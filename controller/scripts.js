@@ -74,6 +74,7 @@ $(document).ready(function () {
             });
 
             if (emptyCounter > 0) {
+
                 Swal.fire({
                     title: 'Töltsd ki az összes mezőt!',
                     icon: 'info',
@@ -84,6 +85,31 @@ $(document).ready(function () {
 
             } else {
                 lotto5ArrayString = lotto5ArrayString.slice(0, -1);
+                let lottoNumbersFromPage = [];
+                const url = 'http://www.lottoszamok.net/otoslotto/';
+                let sameNumbersArray = [];
+                let sameNumbersArraySet = new Set();
+
+                xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET", url, false);
+                xmlhttp.send();
+                parser = new DOMParser();
+                const dom = parser.parseFromString(xmlhttp.responseText, "text/html");
+                const listElements = dom.querySelectorAll('.szamok_nagy ul li span').values();
+
+                for (value of listElements) {
+                    lottoNumbersFromPage.push(value.innerText);
+                }
+
+                sameNumbersArray = lotto5Array.filter(obj => {
+                    return lottoNumbersFromPage.indexOf(obj) !== -1;
+                });
+
+                sameNumbersArray.forEach(number => {
+                    sameNumbersArraySet.add(number);
+                });
+
+                sameNumbersArraySet = Array.from(sameNumbersArraySet);
 
                 if (!(numberPattern.test(lotto5ArrayString))) {
                     Swal.fire({
@@ -94,14 +120,32 @@ $(document).ready(function () {
                     }).then((result) => {
                     });
                 } else {
-                    Swal.fire({
-                        title: 'A nyerőszámaid:',
-                        text: lotto5ArrayString,
-                        icon: 'info',
-                        confirmButtonColor: '#19b243',
-                        confirmButtonText: 'Értem'
-                    }).then((result) => {
-                    });
+                    if (sameNumbersArraySet.length == 0) {
+                        Swal.fire({
+                            html: '<h1>Sajnos nem találtál el egy számot sem! :(</h1><h2>A heti lottószámok:</h2>' + lottoNumbersFromPage + '<br>' + '<h2>A saját számaid:</h2><p>' + lotto5ArrayString + '</p>',
+                            icon: 'info',
+                            confirmButtonColor: '#19b243',
+                            confirmButtonText: 'Értem'
+                        }).then((result) => {
+                        });
+                    } else if (sameNumbersArraySet.length == 5) {
+                        Swal.fire({
+                            html: '<h1>Gratulálunk telitalálatod van!</h1><h2>A heti lottószámok:</h2>' + lottoNumbersFromPage + '<br>' + '<h2>A saját számaid:</h2><p>' + lotto5ArrayString + '</p>',
+                            icon: 'success',
+                            confirmButtonColor: '#19b243',
+                            confirmButtonText: 'Értem'
+                        }).then((result) => {
+                        });
+                    } else {
+                        Swal.fire({
+                            html: '<h1>Gratulálunk ' + sameNumbersArraySet.length + ' találatod van!</h1><p>A találataid: ' + sameNumbersArraySet + '</p><h2>A heti lottószámok:</h2>' + lottoNumbersFromPage + '<br>' + '<h2>A saját számaid:</h2><p>' + lotto5ArrayString + '</p>',
+                            icon: 'success',
+                            confirmButtonColor: '#19b243',
+                            confirmButtonText: 'Értem'
+                        }).then((result) => {
+                        });
+                    }
+
                 }
             }
 
@@ -131,6 +175,31 @@ $(document).ready(function () {
                 });
             } else {
                 lotto6ArrayString = lotto6ArrayString.slice(0, -1);
+                let lottoNumbersFromPage = [];
+                const url = 'http://www.lottoszamok.net/hatoslotto/';
+                let sameNumbersArray = [];
+                let sameNumbersArraySet = new Set();
+
+                xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET", url, false);
+                xmlhttp.send();
+                parser = new DOMParser();
+                const dom = parser.parseFromString(xmlhttp.responseText, "text/html");
+                const listElements = dom.querySelectorAll('.szamok_nagy ul li span').values();
+
+                for (value of listElements) {
+                    lottoNumbersFromPage.push(value.innerText);
+                }
+
+                sameNumbersArray = lotto6Array.filter(obj => {
+                    return lottoNumbersFromPage.indexOf(obj) !== -1;
+                });
+
+                sameNumbersArray.forEach(number => {
+                    sameNumbersArraySet.add(number);
+                });
+
+                sameNumbersArraySet = Array.from(sameNumbersArraySet);
 
                 if (!(numberPattern.test(lotto6ArrayString))) {
                     Swal.fire({
@@ -141,14 +210,31 @@ $(document).ready(function () {
                     }).then((result) => {
                     });
                 } else {
-                    Swal.fire({
-                        title: 'A nyerőszámaid:',
-                        text: lotto6ArrayString,
-                        icon: 'info',
-                        confirmButtonColor: '#19b243',
-                        confirmButtonText: 'Értem'
-                    }).then((result) => {
-                    });
+                    if (sameNumbersArraySet.length == 0) {
+                        Swal.fire({
+                            html: '<h1>Sajnos nem találtál el egy számot sem! :(</h1><h2>A heti lottószámok:</h2>' + lottoNumbersFromPage + '<br>' + '<h2>A saját számaid:</h2><p>' + lotto6ArrayString + '</p>',
+                            icon: 'info',
+                            confirmButtonColor: '#19b243',
+                            confirmButtonText: 'Értem'
+                        }).then((result) => {
+                        });
+                    } else if (sameNumbersArraySet.length == 6) {
+                        Swal.fire({
+                            html: '<h1>Gratulálunk telitalálatod van!</h1><h2>A heti lottószámok:</h2>' + lottoNumbersFromPage + '<br>' + '<h2>A saját számaid:</h2><p>' + lotto6ArrayString + '</p>',
+                            icon: 'success',
+                            confirmButtonColor: '#19b243',
+                            confirmButtonText: 'Értem'
+                        }).then((result) => {
+                        });
+                    } else {
+                        Swal.fire({
+                            html: '<h1>Gratulálunk ' + sameNumbersArraySet.length + ' találatod van!</h1><p>A találataid: ' + sameNumbersArraySet + '</p><h2>A heti lottószámok:</h2>' + lottoNumbersFromPage + '<br>' + '<h2>A saját számaid:</h2><p>' + lotto6ArrayString + '</p>',
+                            icon: 'success',
+                            confirmButtonColor: '#19b243',
+                            confirmButtonText: 'Értem'
+                        }).then((result) => {
+                        });
+                    }
                 }
             }
 
@@ -167,6 +253,33 @@ $(document).ready(function () {
                     skandiArrayString += number + ','
                 }
             });
+
+            const url = 'http://www.lottoszamok.net/skandinav-lotto/';
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", url, false);
+            xmlhttp.send();
+            parser = new DOMParser();
+            const dom = parser.parseFromString(xmlhttp.responseText, "text/html");
+            const listElements = dom.querySelectorAll('.szamok_nagy ul li').values();
+            let machineArray = [];
+            let handArray = [];
+
+            for (value of listElements) {
+                if (value.innerText == 'Gépi:') {
+                    continue;
+                } else {
+                    machineArray.push(value.innerText);
+                    if (value.innerText == 'Kézi:') {
+                        break;
+                    }
+                }
+            }
+
+            machineArray.pop();
+
+            for (value of listElements) {
+                handArray.push(value.innerText);
+            }
 
             if (emptyCounter > 0) {
                 Swal.fire({
@@ -188,14 +301,88 @@ $(document).ready(function () {
                     }).then((result) => {
                     });
                 } else {
-                    Swal.fire({
-                        title: 'A nyerőszámaid:',
-                        text: skandiArrayString,
-                        icon: 'info',
-                        confirmButtonColor: '#19b243',
-                        confirmButtonText: 'Értem'
-                    }).then((result) => {
-                    });
+
+                    if ($('[name="machine_checkbox"]').is(':checked')) {
+                        let sameNumbersArray = [];
+                        let sameNumbersArraySet = new Set();
+        
+                        sameNumbersArray = skandiArray.filter(obj => {
+                            return machineArray.indexOf(obj) !== -1;
+                        });
+        
+                        sameNumbersArray.forEach(number => {
+                            sameNumbersArraySet.add(number);
+                        });
+        
+                        sameNumbersArraySet = Array.from(sameNumbersArraySet);
+        
+                        if (sameNumbersArraySet.length == 0) {
+                            Swal.fire({
+                                html: '<h1>Sajnos nem találtál el egy számot sem! :(</h1><h2>A heti lottószámok:</h2>' + machineArray + '<br>' + '<h2>A saját számaid:</h2><p>' + skandiArrayString + '</p>',
+                                icon: 'info',
+                                confirmButtonColor: '#19b243',
+                                confirmButtonText: 'Értem'
+                            }).then((result) => {
+                            });
+                        } else if (sameNumbersArraySet.length == 7) {
+                            Swal.fire({
+                                html: '<h1>Gratulálunk telitalálatod van!</h1><h2>A heti lottószámok:</h2>' + machineArray + '<br>' + '<h2>A saját számaid:</h2><p>' + skandiArrayString + '</p>',
+                                icon: 'success',
+                                confirmButtonColor: '#19b243',
+                                confirmButtonText: 'Értem'
+                            }).then((result) => {
+                            });
+                        } else {
+                            Swal.fire({
+                                html: '<h1>Gratulálunk ' + sameNumbersArraySet.length + ' találatod van!</h1><p>A találataid: ' + sameNumbersArraySet + '</p><h2>A heti lottószámok:</h2>' + machineArray + '<br>' + '<h2>A saját számaid:</h2><p>' + skandiArrayString + '</p>',
+                                icon: 'success',
+                                confirmButtonColor: '#19b243',
+                                confirmButtonText: 'Értem'
+                            }).then((result) => {
+                            });
+                        }
+                    }
+        
+                    if ($('[name="hand_checkbox"]').is(':checked')) {
+                        let sameNumbersArray = [];
+                        let sameNumbersArraySet = new Set();
+        
+                        sameNumbersArray = skandiArray.filter(obj => {
+                            return handArray.indexOf(obj) !== -1;
+                        });
+        
+                        sameNumbersArray.forEach(number => {
+                            sameNumbersArraySet.add(number);
+                        });
+        
+                        sameNumbersArraySet = Array.from(sameNumbersArraySet);
+                        
+                        if (sameNumbersArraySet.length == 0) {
+                            Swal.fire({
+                                html: '<h1>Sajnos nem találtál el egy számot sem! :(</h1><h2>A heti lottószámok:</h2>' + handArray + '<br>' + '<h2>A saját számaid:</h2><p>' + skandiArrayString + '</p>',
+                                icon: 'info',
+                                confirmButtonColor: '#19b243',
+                                confirmButtonText: 'Értem'
+                            }).then((result) => {
+                            });
+                        } else if (sameNumbersArraySet.length == 7) {
+                            Swal.fire({
+                                html: '<h1>Gratulálunk telitalálatod van!</h1><h2>A heti lottószámok:</h2>' + handArray + '<br>' + '<h2>A saját számaid:</h2><p>' + skandiArrayString + '</p>',
+                                icon: 'success',
+                                confirmButtonColor: '#19b243',
+                                confirmButtonText: 'Értem'
+                            }).then((result) => {
+                            });
+                        } else {
+                            Swal.fire({
+                                html: '<h1>Gratulálunk ' + sameNumbersArraySet.length + ' találatod van!</h1><p>A találataid: ' + sameNumbersArraySet + '</p><h2>A heti lottószámok:</h2>' + handArray + '<br>' + '<h2>A saját számaid:</h2><p>' + skandiArrayString + '</p>',
+                                icon: 'success',
+                                confirmButtonColor: '#19b243',
+                                confirmButtonText: 'Értem'
+                            }).then((result) => {
+                            });
+                        }
+                    }
                 }
             }
         }
