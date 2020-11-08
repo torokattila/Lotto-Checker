@@ -91,7 +91,7 @@ $(document).ready(function () {
                 let sameNumbersArraySet = new Set();
 
                 xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("GET", url, true);
+                xmlhttp.open("GET", 'https://cors-anywhere.herokuapp.com/' + url, false);
                 xmlhttp.send();
                 parser = new DOMParser();
                 const dom = parser.parseFromString(xmlhttp.responseText, "text/html");
@@ -181,7 +181,7 @@ $(document).ready(function () {
                 let sameNumbersArraySet = new Set();
 
                 xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("GET", url, true);
+                xmlhttp.open("GET", 'https://cors-anywhere.herokuapp.com/' + url, false);
                 xmlhttp.send();
                 parser = new DOMParser();
                 const dom = parser.parseFromString(xmlhttp.responseText, "text/html");
@@ -256,7 +256,7 @@ $(document).ready(function () {
 
             const url = 'https://www.lottoszamok.net/skandinav-lotto/';
             xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("GET", url, true);
+            xmlhttp.open("GET", 'https://cors-anywhere.herokuapp.com/' + url, false);
             xmlhttp.send();
             parser = new DOMParser();
             const dom = parser.parseFromString(xmlhttp.responseText, "text/html");
