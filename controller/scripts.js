@@ -97,8 +97,6 @@ $(document).ready(function () {
                 const dom = parser.parseFromString(xmlhttp.responseText, "text/html");
                 const listElements = dom.querySelectorAll('.szamok_nagy ul li span').values();
 
-                console.log(dom)
-
                 for (value of listElements) {
                     lottoNumbersFromPage.push(value.innerText);
                 }
