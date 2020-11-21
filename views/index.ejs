@@ -26,7 +26,7 @@
                 <div class="lotto5">
                     <% for (let i = 0; i < 5; i++) { %>
                     <div class="number-inputs-div">
-                        <input class="number-inputs lotto5_input" type="text" name="input_number_lotto5[]" maxlength="2">
+                        <input id="<%=i%>" class="number-inputs lotto5_input" type="text" name="input_number_lotto5[]" maxlength="2">
                     </div>
                     <% } %>
                 </div>
@@ -44,6 +44,11 @@
                     </div>
                     <% } %>
                 </div>
+                
+                <div class="validation-message" align="center">
+                    <span>A mezők csak számot tartalmazhatnak!</span>
+                </div>
+
             </div>
             <div class="card-bottom-content">
                 <button class="send-button" type="button">Nézzük</button>

@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $('#lotto_types').change(function () {
         if ($(this).val() == '5') {
             $('.lotto6').css("visibility", "hidden");
@@ -47,6 +48,36 @@ $(document).ready(function () {
         let index = $(this).index("input");
         if (this.value.length == this.maxLength) {
             $("input:eq(" + (index + 1) + ")").focus();
+        }
+    });
+
+    $('.lotto5_input').keyup(function () {
+        const numberPattern = /^[0-9,]*$/;
+
+        if (!(numberPattern.test($(this).val()))) {
+            $('.validation-message').fadeIn();
+        } else {
+            $('.validation-message').fadeOut();
+        }
+    });
+
+    $('.lotto6_input').keyup(function () {
+        const numberPattern = /^[0-9,]*$/;
+
+        if (!(numberPattern.test($(this).val()))) {
+            $('.validation-message').fadeIn();
+        } else {
+            $('.validation-message').fadeOut();
+        }
+    });
+
+    $('.skandi_input').keyup(function () {
+        const numberPattern = /^[0-9,]*$/;
+
+        if (!(numberPattern.test($(this).val()))) {
+            $('.validation-message').fadeIn();
+        } else {
+            $('.validation-message').fadeOut();
         }
     });
 
@@ -305,17 +336,17 @@ $(document).ready(function () {
                     if ($('[name="machine_checkbox"]').is(':checked')) {
                         let sameNumbersArray = [];
                         let sameNumbersArraySet = new Set();
-        
+
                         sameNumbersArray = skandiArray.filter(obj => {
                             return machineArray.indexOf(obj) !== -1;
                         });
-        
+
                         sameNumbersArray.forEach(number => {
                             sameNumbersArraySet.add(number);
                         });
-        
+
                         sameNumbersArraySet = Array.from(sameNumbersArraySet);
-        
+
                         if (sameNumbersArraySet.length == 0) {
                             Swal.fire({
                                 html: '<h1>Sajnos nem találtál el egy számot sem! :(</h1><h2>A heti lottószámok:</h2>' + machineArray + '<br>' + '<h2>A saját számaid:</h2><p>' + skandiArrayString + '</p>',
@@ -342,21 +373,21 @@ $(document).ready(function () {
                             });
                         }
                     }
-        
+
                     if ($('[name="hand_checkbox"]').is(':checked')) {
                         let sameNumbersArray = [];
                         let sameNumbersArraySet = new Set();
-        
+
                         sameNumbersArray = skandiArray.filter(obj => {
                             return handArray.indexOf(obj) !== -1;
                         });
-        
+
                         sameNumbersArray.forEach(number => {
                             sameNumbersArraySet.add(number);
                         });
-        
+
                         sameNumbersArraySet = Array.from(sameNumbersArraySet);
-                        
+
                         if (sameNumbersArraySet.length == 0) {
                             Swal.fire({
                                 html: '<h1>Sajnos nem találtál el egy számot sem! :(</h1><h2>A heti lottószámok:</h2>' + handArray + '<br>' + '<h2>A saját számaid:</h2><p>' + skandiArrayString + '</p>',
